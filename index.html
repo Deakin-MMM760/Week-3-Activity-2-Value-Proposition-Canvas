@@ -1,1 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MMM760 | Week 3 Activity 2 | Value Proposition Canvas</title>
+  <style>
+    :root {
+      --teal: #006f79;
+      --teal-dark: #0b4f57;
+      --teal-soft: #dff1f3;
+      --orange: #f08b2f;
+      --orange-soft: #fff2e4;
+      --text: #22313a;
+      --muted: #5f6f78;
+      --line: #c9d7dc;
+      --panel: #ffffff;
+      --page: #f5f7f8;
+      --grey-box: #eef1f3;
+      --shadow: 0 8px 24px rgba(24, 39, 75, 0.08);
+      --radius: 18px;
+    }
 
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--page);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .action-btn {
+      appearance: none;
+      border: 1px solid var(--teal);
+      background: #ffffff;
+      color: var(--teal-dark);
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+
+    .action-btn:hover,
+    .action-btn:focus-visible {
+      background: var(--teal);
+      color: #ffffff;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .main-card,
+    .sidebar-card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .main-card {
+      padding: 32px;
+    }
+
+    .sidebar-wrap {
+      position: sticky;
+      top: 20px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .sidebar-card {
+      padding: 22px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--teal-dark);
+      font-size: 34px;
+      line-height: 1.15;
+    }
+
+    .intro {
+      margin: 14px 0 0;
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .producing-box {
+      margin-top: 24px;
+      background: var(--grey-box);
+      border-radius: 16px;
+      padding: 20px 22px;
+      border-left: 6px solid var(--teal);
+    }
+
+    .producing-box h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: var(--teal-dark);
+    }
+
+    .producing-box p {
+      margin: 8px 0;
+    }
+
+    .section {
+      margin-top: 28px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      background: #ffffff;
+    }
+
+    .section h2 {
+      margin: 0 0 8px;
+      font-size: 25px;
+      color: var(--teal-dark);
+    }
+
+    .section .section-intro {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .prompt-box {
+      background: #fafcfc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+
+    .prompt-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--teal);
+    }
+
+    .prompt {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      font-style: italic;
+      color: #5b6770;
+      font-size: 17px;
+    }
+
+    label.field-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .field-note {
+      margin: -4px 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      border: 1px solid #b5c7cd;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: #ffffff;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0, 111, 121, 0.12);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .compact-area {
+      min-height: 92px;
+    }
+
+    .mini-grid,
+    .two-grid,
+    .three-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .mini-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .two-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .three-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .field-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      background: #fafcfc;
+    }
+
+    .field-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--teal-dark);
+    }
+
+    .field-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .subtle-box {
+      margin-top: 16px;
+      background: var(--orange-soft);
+      border: 1px solid #f3cfac;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .subtle-box h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #7d4b12;
+    }
+
+    .subtle-box p {
+      margin: 6px 0;
+      color: #6d4f27;
+    }
+
+    .status-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .status-item {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: #ffffff;
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .status-name {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .status-text {
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .status-text.complete {
+      background: #e3f4e8;
+      color: #1d6b38;
+    }
+
+    .status-text.progress {
+      background: #fff0e0;
+      color: #8b5a20;
+    }
+
+    .status-text.empty {
+      background: #eef1f3;
+      color: #5f6f78;
+    }
+
+    .progress-bar {
+      margin-top: 14px;
+      height: 12px;
+      background: #e8eef0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--teal), #1794a0);
+      transition: width 0.2s ease;
+    }
+
+    .progress-copy {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .sidebar-card h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      color: var(--teal-dark);
+    }
+
+    .sidebar-card p,
+    .sidebar-card li {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .sidebar-card ul {
+      margin: 10px 0 0 18px;
+      padding: 0;
+    }
+
+    .helper-card {
+      border-top: 6px solid var(--orange);
+    }
+
+    .footer-space {
+      height: 12px;
+    }
+
+    @media (max-width: 1100px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar-wrap {
+        position: static;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .mini-grid,
+      .two-grid,
+      .three-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 16px;
+      }
+
+      .main-card,
+      .sidebar-card {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .top-actions,
+      .sidebar-wrap {
+        display: none !important;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .main-card,
+      .section,
+      .producing-box,
+      .field-card {
+        box-shadow: none;
+        border: 1px solid #c6d0d5;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      .section,
+      .producing-box {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-actions">
+      <button class="action-btn" type="button" id="resetBtn">Reset worksheet</button>
+      <button class="action-btn" type="button" id="exportBtn">Export to Word</button>
+      <button class="action-btn" type="button" id="printBtn">Print or save as PDF</button>
+    </div>
+
+    <div class="layout">
+      <main class="main-card">
+        <p class="eyebrow">MMM760 | Week 3</p>
+        <h1>Activity 2 | Value Proposition Canvas</h1>
+        <p class="intro">Use this worksheet to draft a simple Value Proposition Canvas for one customer segment. Keep the focus on what the customer is trying to do, what frustrates them, what good looks like to them, and how your offer responds.</p>
+
+        <section class="producing-box">
+          <h2>What you’re producing</h2>
+          <p>One clearly chosen customer segment.</p>
+          <p>A customer profile with jobs, pains and gains.</p>
+          <p>A value map with products and services, pain relievers and gain creators.</p>
+          <p>One top pain and one top gain to focus on.</p>
+          <p>One proof question that helps test whether the pain is real and important.</p>
+        </section>
+
+        <section class="section" id="segmentSection">
+          <h2>1. Choose one customer segment</h2>
+          <p class="section-intro">Pick one segment only. This worksheet works best when you are specific about who the business is really for.</p>
+          <div class="mini-grid">
+            <div>
+              <label class="field-label" for="businessName">Business name or idea</label>
+              <input type="text" id="businessName" placeholder="Type the business name or concept here">
+            </div>
+            <div>
+              <label class="field-label" for="customerSegment">Customer segment</label>
+              <input type="text" id="customerSegment" placeholder="Name the specific customer segment">
+            </div>
+          </div>
+          <div style="margin-top:16px;">
+            <label class="field-label" for="segmentDescription">Segment description</label>
+            <p class="field-note">Describe this segment in one clear sentence.</p>
+            <textarea id="segmentDescription" class="compact-area" placeholder="Who are they, what situation are they in, and why are they relevant to this business?"></textarea>
+          </div>
+        </section>
+
+        <section class="section" id="profileSection">
+          <h2>2. Customer profile</h2>
+          <p class="section-intro">Think from the customer’s point of view. Describe what they are trying to get done, what gets in the way, and what positive outcomes they want.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt</span>
+            <p class="prompt">Customers are trying to get important things done, avoid frustrations, and achieve outcomes that matter to them.</p>
+          </div>
+
+          <div class="three-grid">
+            <div class="field-card">
+              <h3>Functional jobs</h3>
+              <p>What practical tasks are they trying to complete?</p>
+              <textarea id="jobFunctional" class="compact-area" placeholder="Examples: save time, compare options, solve a problem, complete a routine task"></textarea>
+            </div>
+            <div class="field-card">
+              <h3>Social jobs</h3>
+              <p>How do they want to be seen by others?</p>
+              <textarea id="jobSocial" class="compact-area" placeholder="Examples: look capable, feel responsible, be seen as smart or organised"></textarea>
+            </div>
+            <div class="field-card">
+              <h3>Emotional jobs</h3>
+              <p>How do they want to feel, or avoid feeling?</p>
+              <textarea id="jobEmotional" class="compact-area" placeholder="Examples: feel confident, calm, reassured, less stressed"></textarea>
+            </div>
+          </div>
+
+          <div class="two-grid">
+            <div>
+              <label class="field-label" for="painsText">Pains</label>
+              <p class="field-note">What annoys them, costs them time or money, creates stress, or creates risk?</p>
+              <textarea id="painsText" placeholder="List the main pains for this customer segment"></textarea>
+            </div>
+            <div>
+              <label class="field-label" for="gainsText">Gains</label>
+              <p class="field-note">What does good look like? What do they value? What would genuinely improve the experience?</p>
+              <textarea id="gainsText" placeholder="List the main gains this customer wants"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="valueMapSection">
+          <h2>3. Value map</h2>
+          <p class="section-intro">Now move from the customer to the offer. Explain what the business provides and how that offer reduces pains and creates gains.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt</span>
+            <p class="prompt">A strong offer connects clearly to the pains and gains that matter most for this specific customer segment.</p>
+          </div>
+
+          <div>
+            <label class="field-label" for="productsServices">Products and services</label>
+            <p class="field-note">What does the business actually provide?</p>
+            <textarea id="productsServices" class="compact-area" placeholder="List the main products, services, features or support elements"></textarea>
+          </div>
+
+          <div class="two-grid">
+            <div>
+              <label class="field-label" for="painRelievers">Pain relievers</label>
+              <p class="field-note">How does the offer reduce the most important pains?</p>
+              <textarea id="painRelievers" placeholder="Explain how the offer reduces frustration, cost, effort, risk or uncertainty"></textarea>
+            </div>
+            <div>
+              <label class="field-label" for="gainCreators">Gain creators</label>
+              <p class="field-note">How does the offer create the gains the customer values most?</p>
+              <textarea id="gainCreators" placeholder="Explain how the offer improves outcomes, convenience, confidence or satisfaction"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="prioritySection">
+          <h2>4. Focus the canvas</h2>
+          <p class="section-intro">Choose the most important pain and gain. If you cannot name one of each, the offer is probably still too broad.</p>
+          <div class="prompt-box">
+            <span class="prompt-label">Prompt</span>
+            <p class="prompt">Which pain matters most right now, and which gain would most clearly improve the customer’s experience?</p>
+          </div>
+
+          <div class="two-grid">
+            <div>
+              <label class="field-label" for="topPain">Top pain to focus on</label>
+              <textarea id="topPain" class="compact-area" placeholder="Name the single most important pain"></textarea>
+            </div>
+            <div>
+              <label class="field-label" for="topGain">Top gain to focus on</label>
+              <textarea id="topGain" class="compact-area" placeholder="Name the single most important gain"></textarea>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;">
+            <label class="field-label" for="proofQuestion">Proof question</label>
+            <p class="field-note">What would you need to observe to believe this pain really matters?</p>
+            <textarea id="proofQuestion" class="compact-area" placeholder="Write one question that would help test whether the pain is real, important and worth solving"></textarea>
+          </div>
+
+          <div class="subtle-box">
+            <h3>Quality check</h3>
+            <p>Are the jobs, pains and gains written from the customer’s point of view rather than the business point of view?</p>
+            <p>Do the pain relievers and gain creators connect clearly to the chosen segment?</p>
+            <p>Could someone read this and understand why this offer fits this customer?</p>
+          </div>
+        </section>
+
+        <div class="footer-space"></div>
+      </main>
+
+      <aside class="sidebar-wrap">
+        <section class="sidebar-card">
+          <h2>Your progress</h2>
+          <p>Use this panel to check what is finished before you export or print the worksheet.</p>
+          <div class="progress-bar" aria-hidden="true">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p class="progress-copy" id="progressCopy">0 of 5 core sections complete</p>
+
+          <div class="status-list">
+            <div class="status-item">
+              <div class="status-row">
+                <span class="status-name">Customer segment</span>
+                <span class="status-text empty" id="statusSegment">Not started</span>
+              </div>
+            </div>
+            <div class="status-item">
+              <div class="status-row">
+                <span class="status-name">Jobs</span>
+                <span class="status-text empty" id="statusJobs">0 of 3 job types</span>
+              </div>
+            </div>
+            <div class="status-item">
+              <div class="status-row">
+                <span class="status-name">Pains and gains</span>
+                <span class="status-text empty" id="statusPainsGains">0 of 2 complete</span>
+              </div>
+            </div>
+            <div class="status-item">
+              <div class="status-row">
+                <span class="status-name">Value map</span>
+                <span class="status-text empty" id="statusValueMap">0 of 3 complete</span>
+              </div>
+            </div>
+            <div class="status-item">
+              <div class="status-row">
+                <span class="status-name">Priorities</span>
+                <span class="status-text empty" id="statusPriority">0 of 3 complete</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sidebar-card helper-card">
+          <h2>Before you export</h2>
+          <ul>
+            <li>Keep the canvas focused on one customer segment.</li>
+            <li>Write the jobs, pains and gains from the customer’s perspective.</li>
+            <li>Make sure the value map responds directly to the most important pains and gains.</li>
+            <li>Choose one top pain and one top gain.</li>
+            <li>Finish the proof question so the idea can be tested.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'mmm760_week3_activity2_vpc';
+
+    const fieldIds = [
+      'businessName',
+      'customerSegment',
+      'segmentDescription',
+      'jobFunctional',
+      'jobSocial',
+      'jobEmotional',
+      'painsText',
+      'gainsText',
+      'productsServices',
+      'painRelievers',
+      'gainCreators',
+      'topPain',
+      'topGain',
+      'proofQuestion'
+    ];
+
+    function getText(id) {
+      const element = document.getElementById(id);
+      return element ? element.value.trim() : '';
+    }
+
+    function setStatus(elementId, text, type) {
+      const element = document.getElementById(elementId);
+      element.textContent = text;
+      element.className = 'status-text ' + type;
+    }
+
+    function countCompleted(ids) {
+      return ids.filter(id => getText(id) !== '').length;
+    }
+
+    function segmentComplete() {
+      return getText('customerSegment') !== '';
+    }
+
+    function jobCount() {
+      return countCompleted(['jobFunctional', 'jobSocial', 'jobEmotional']);
+    }
+
+    function jobsComplete() {
+      return jobCount() >= 1;
+    }
+
+    function painsGainsCount() {
+      return countCompleted(['painsText', 'gainsText']);
+    }
+
+    function painsGainsComplete() {
+      return painsGainsCount() === 2;
+    }
+
+    function valueMapCount() {
+      return countCompleted(['productsServices', 'painRelievers', 'gainCreators']);
+    }
+
+    function valueMapComplete() {
+      return valueMapCount() === 3;
+    }
+
+    function priorityCount() {
+      return countCompleted(['topPain', 'topGain', 'proofQuestion']);
+    }
+
+    function priorityComplete() {
+      return priorityCount() === 3;
+    }
+
+    function updateProgress() {
+      const segmentDone = segmentComplete();
+      const jobsDone = jobsComplete();
+      const painsGainsDone = painsGainsComplete();
+      const valueMapDone = valueMapComplete();
+      const priorityDone = priorityComplete();
+
+      const completedSections = [segmentDone, jobsDone, painsGainsDone, valueMapDone, priorityDone].filter(Boolean).length;
+      const percentage = (completedSections / 5) * 100;
+
+      document.getElementById('progressFill').style.width = percentage + '%';
+      document.getElementById('progressCopy').textContent = completedSections + ' of 5 core sections complete';
+
+      const segmentHasAny = getText('customerSegment') || getText('segmentDescription') || getText('businessName');
+      setStatus(
+        'statusSegment',
+        segmentDone ? 'Complete' : (segmentHasAny ? 'In progress' : 'Not started'),
+        segmentDone ? 'complete' : (segmentHasAny ? 'progress' : 'empty')
+      );
+
+      const jobsFilled = jobCount();
+      setStatus(
+        'statusJobs',
+        jobsFilled + ' of 3 job types',
+        jobsFilled >= 1 ? 'complete' : 'empty'
+      );
+
+      const painsGainsFilled = painsGainsCount();
+      setStatus(
+        'statusPainsGains',
+        painsGainsFilled + ' of 2 complete',
+        painsGainsFilled === 2 ? 'complete' : (painsGainsFilled > 0 ? 'progress' : 'empty')
+      );
+
+      const valueMapFilled = valueMapCount();
+      setStatus(
+        'statusValueMap',
+        valueMapFilled + ' of 3 complete',
+        valueMapFilled === 3 ? 'complete' : (valueMapFilled > 0 ? 'progress' : 'empty')
+      );
+
+      const prioritiesFilled = priorityCount();
+      setStatus(
+        'statusPriority',
+        prioritiesFilled + ' of 3 complete',
+        prioritiesFilled === 3 ? 'complete' : (prioritiesFilled > 0 ? 'progress' : 'empty')
+      );
+    }
+
+    function saveState() {
+      const state = {};
+
+      fieldIds.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          state[id] = element.value;
+        }
+      });
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      updateProgress();
+    }
+
+    function loadState() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) {
+        updateProgress();
+        return;
+      }
+
+      try {
+        const state = JSON.parse(raw);
+
+        fieldIds.forEach(id => {
+          if (Object.prototype.hasOwnProperty.call(state, id)) {
+            const element = document.getElementById(id);
+            if (element) {
+              element.value = state[id];
+            }
+          }
+        });
+      } catch (error) {
+        console.error('Could not load saved worksheet state.', error);
+      }
+
+      updateProgress();
+    }
+
+    function escapeHtml(value) {
+      return (value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/\n/g, '<br>');
+    }
+
+    function exportToWord() {
+      saveState();
+
+      const docTitle = (getText('businessName') || 'Week-3-Activity-2-Value-Proposition-Canvas')
+        .replace(/[^a-z0-9\-\s]/gi, '')
+        .trim()
+        .replace(/\s+/g, '-');
+
+      const content = `
+        <html xmlns:o="urn:schemas-microsoft-com:office:office"
+              xmlns:w="urn:schemas-microsoft-com:office:word"
+              xmlns="http://www.w3.org/TR/REC-html40">
+        <head>
+          <meta charset="utf-8">
+          <title>MMM760 Week 3 Activity 2</title>
+        </head>
+        <body style="font-family: Arial, Helvetica, sans-serif; color: #22313a; line-height: 1.45;">
+          <h1 style="color:#0b4f57;">MMM760 | Week 3 Activity 2 | Value Proposition Canvas</h1>
+
+          <h2 style="color:#0b4f57; margin-top:24px;">Segment</h2>
+          <p><strong>Business name or idea:</strong> ${escapeHtml(getText('businessName')) || '&nbsp;'}</p>
+          <p><strong>Customer segment:</strong> ${escapeHtml(getText('customerSegment')) || '&nbsp;'}</p>
+          <p><strong>Segment description:</strong><br>${escapeHtml(getText('segmentDescription')) || '&nbsp;'}</p>
+
+          <h2 style="color:#0b4f57; margin-top:24px;">Customer profile</h2>
+          <table style="width:100%; border-collapse:collapse;">
+            <tbody>
+              <tr>
+                <td style="width:26%; padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Functional jobs</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('jobFunctional')) || '&nbsp;'}</td>
+              </tr>
+              <tr>
+                <td style="padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Social jobs</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('jobSocial')) || '&nbsp;'}</td>
+              </tr>
+              <tr>
+                <td style="padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Emotional jobs</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('jobEmotional')) || '&nbsp;'}</td>
+              </tr>
+              <tr>
+                <td style="padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Pains</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('painsText')) || '&nbsp;'}</td>
+              </tr>
+              <tr>
+                <td style="padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Gains</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('gainsText')) || '&nbsp;'}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 style="color:#0b4f57; margin-top:24px;">Value map</h2>
+          <table style="width:100%; border-collapse:collapse;">
+            <tbody>
+              <tr>
+                <td style="width:26%; padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Products and services</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('productsServices')) || '&nbsp;'}</td>
+              </tr>
+              <tr>
+                <td style="padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Pain relievers</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('painRelievers')) || '&nbsp;'}</td>
+              </tr>
+              <tr>
+                <td style="padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Gain creators</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('gainCreators')) || '&nbsp;'}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 style="color:#0b4f57; margin-top:24px;">Priorities and proof</h2>
+          <table style="width:100%; border-collapse:collapse;">
+            <tbody>
+              <tr>
+                <td style="width:26%; padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Top pain</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('topPain')) || '&nbsp;'}</td>
+              </tr>
+              <tr>
+                <td style="padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Top gain</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('topGain')) || '&nbsp;'}</td>
+              </tr>
+              <tr>
+                <td style="padding:8px; border:1px solid #b7c7cc; background:#f5f7f8;"><strong>Proof question</strong></td>
+                <td style="padding:8px; border:1px solid #b7c7cc;">${escapeHtml(getText('proofQuestion')) || '&nbsp;'}</td>
+              </tr>
+            </tbody>
+          </table>
+        </body>
+        </html>`;
+
+      const blob = new Blob(['\ufeff', content], { type: 'application/msword' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `${docTitle || 'Week-3-Activity-2-Value-Proposition-Canvas'}.doc`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    }
+
+    function resetWorksheet() {
+      const confirmed = window.confirm('Reset this worksheet and clear all saved entries?');
+      if (!confirmed) {
+        return;
+      }
+
+      fieldIds.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.value = '';
+        }
+      });
+
+      localStorage.removeItem(STORAGE_KEY);
+      updateProgress();
+    }
+
+    document.querySelectorAll('input, textarea').forEach(field => {
+      field.addEventListener('input', saveState);
+      field.addEventListener('change', saveState);
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', resetWorksheet);
+    document.getElementById('exportBtn').addEventListener('click', exportToWord);
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+    loadState();
+  </script>
+</body>
+</html>
